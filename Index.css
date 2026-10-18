@@ -5910,3 +5910,64 @@ body {
         width: calc(100% - 16px);
     }
 }
+
+
+/* Homepage color refinements requested on 2026-10-18 */
+body h2 { color: #000000 !important; }
+
+.top-selling-shop-btn,
+.new-arrivals-shop-btn,
+.phone-covers-view-all,
+.screen-protectors-shop-btn,
+.headphones-shop-btn,
+.smartwatches-shop-btn,
+.chargers-cables-view-all,
+.recommended-view-all,
+.top-selling-shop-btn i,
+.new-arrivals-shop-btn i,
+.phone-covers-view-all i,
+.screen-protectors-shop-btn i,
+.headphones-shop-btn i,
+.smartwatches-shop-btn i,
+.chargers-cables-view-all i,
+.recommended-view-all i {
+    color: #000000 !important;
+}
+
+.top-selling-shop-btn:hover,
+.new-arrivals-shop-btn:hover,
+.phone-covers-view-all:hover,
+.screen-protectors-shop-btn:hover,
+.headphones-shop-btn:hover,
+.smartwatches-shop-btn:hover,
+.chargers-cables-view-all:hover,
+.recommended-view-all:hover {
+    color: #000000 !important;
+}
+
+.top-selling-price strong,
+.phone-cover-price strong,
+.new-arrival-price strong,
+.screen-protector-price strong,
+.product-price strong,
+.smartwatch-price strong,
+.chargers-cables-price strong,
+.recommended-product-details .product-price strong,
+.global-search-price,
+.global-search-price strong {
+    color: #000000 !important;
+}
+
+.top-selling-arrow,
+.new-arrivals-arrow,
+.carousel-arrow,
+.carousel-button {
+    background-color: #000000 !important;
+}
+
+.top-selling-arrow:hover,
+.new-arrivals-arrow:hover,
+.carousel-arrow:hover,
+.carousel-button:hover {
+    background-color: #222222 !important;
+}
