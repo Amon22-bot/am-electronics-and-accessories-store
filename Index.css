@@ -5971,3 +5971,9 @@ body h2 { color: #000000 !important; }
 .carousel-button:hover {
     background-color: #222222 !important;
 }
+
+
+/* Keep the FAQ section heading white on its dark background. */
+.faq-container > h2 {
+    color: #ffffff !important;
+}
