@@ -6043,3 +6043,9 @@ body { background: #ffffff !important; }
     border-radius: 30px !important;
     box-shadow: none;
 }
+
+
+/* Demo polish: use white icons on the dark footer benefits strip. */
+.service-benefits .benefit-icon {
+  color: #ffffff !important;
+}
