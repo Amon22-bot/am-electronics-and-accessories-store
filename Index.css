@@ -5893,3 +5893,20 @@ body {
     border-color: #ffffff;
     color: #111111;
 }
+
+
+@media (max-width: 768px) {
+    .navbar-menu > a:not(.navbar-cart)::after {
+        display: block;
+        left: 8px;
+        bottom: 4px;
+        width: 0;
+        height: 2px;
+        background: #ffffff;
+    }
+
+    .navbar-menu > a:not(.navbar-cart):hover::after,
+    .navbar-menu > a:not(.navbar-cart).active::after {
+        width: calc(100% - 16px);
+    }
+}
