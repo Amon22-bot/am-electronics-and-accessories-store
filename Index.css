@@ -6049,3 +6049,7 @@ body { background: #ffffff !important; }
 .service-benefits .benefit-icon {
   color: #ffffff !important;
 }
+
+
+/* Footer benefit icons: white on the dark background. */
+.service-benefits .benefit-icon { color: #ffffff !important; }
