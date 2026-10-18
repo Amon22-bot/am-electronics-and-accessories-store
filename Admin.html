@@ -525,6 +525,18 @@
     .order-flag input { width: 17px; height: 17px; accent-color: var(--primary-blue); cursor: pointer; }
     .order-flag input:disabled { cursor: wait; }
     @media (max-width: 600px) { .order-details-grid { grid-template-columns: 1fr; } .order-item { grid-template-columns: 72px minmax(0,1fr); } .order-item img, .order-item-image-placeholder { width: 72px; height: 72px; } .order-item-total { grid-column: 2; } }
+
+    .hero-admin-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; }
+    .hero-admin-card { min-width:0; padding:15px; border:1px solid var(--border); border-radius:11px; background:#fbfdff; }
+    .hero-admin-card h4 { margin:0 0 10px; color:var(--deep-blue); }
+    .hero-admin-preview { display:grid; place-items:center; width:100%; aspect-ratio:16/8; margin-bottom:12px; border:1px dashed #b8c9d8; border-radius:8px; background:#eef3f7; overflow:hidden; color:var(--muted); font-size:13px; text-align:center; }
+    .hero-admin-preview img { width:100%; height:100%; object-fit:cover; }
+    .hero-admin-card input[type="url"], .hero-admin-card input[type="file"] { width:100%; }
+    .hero-admin-card input[type="file"] { margin-top:8px; font-size:12px; }
+    .hero-admin-actions { display:flex; gap:12px; flex-wrap:wrap; margin-top:20px; }
+    .hero-admin-note { padding:13px 15px; margin:0 0 18px; border:1px solid #f3d68a; border-radius:8px; background:#fff8e7; color:#795400; font-size:13px; }
+    @media (max-width:700px) { .hero-admin-actions { flex-direction:column; } }
+
 </style>
 
 
@@ -789,6 +801,60 @@
         </div>
     </section>
 </div>
+
+
+<section class="panel upload-panel" id="heroImagesPanel" aria-labelledby="heroImagesHeading">
+    <div class="panel-heading">
+        <h3 id="heroImagesHeading">Homepage hero images</h3>
+        <p>Choose an image for each of the five homepage slides and preview it here.</p>
+    </div>
+    <div class="panel-body">
+        <p class="hero-admin-note"><strong>Preview mode:</strong> Images are saved in this browser only. Publishing them for all visitors requires the site’s image service, which is not connected yet.</p>
+        <div class="hero-admin-grid" id="heroImageSlots">
+            <article class="hero-admin-card" data-hero-slot="0">
+                <h4>Hero slide 1</h4>
+                <div class="hero-admin-preview"><span>Image preview</span></div>
+                <label for="heroImageUrl1">Image URL or path</label>
+                <input id="heroImageUrl1" type="text" data-hero-url placeholder="https://… or images.html/banner.jpg">
+                <label for="heroImageFile1" style="margin-top:12px">Choose an image file</label>
+                <input id="heroImageFile1" type="file" data-hero-file accept="image/*">
+            </article><article class="hero-admin-card" data-hero-slot="1">
+                <h4>Hero slide 2</h4>
+                <div class="hero-admin-preview"><span>Image preview</span></div>
+                <label for="heroImageUrl2">Image URL or path</label>
+                <input id="heroImageUrl2" type="text" data-hero-url placeholder="https://… or images.html/banner.jpg">
+                <label for="heroImageFile2" style="margin-top:12px">Choose an image file</label>
+                <input id="heroImageFile2" type="file" data-hero-file accept="image/*">
+            </article><article class="hero-admin-card" data-hero-slot="2">
+                <h4>Hero slide 3</h4>
+                <div class="hero-admin-preview"><span>Image preview</span></div>
+                <label for="heroImageUrl3">Image URL or path</label>
+                <input id="heroImageUrl3" type="text" data-hero-url placeholder="https://… or images.html/banner.jpg">
+                <label for="heroImageFile3" style="margin-top:12px">Choose an image file</label>
+                <input id="heroImageFile3" type="file" data-hero-file accept="image/*">
+            </article><article class="hero-admin-card" data-hero-slot="3">
+                <h4>Hero slide 4</h4>
+                <div class="hero-admin-preview"><span>Image preview</span></div>
+                <label for="heroImageUrl4">Image URL or path</label>
+                <input id="heroImageUrl4" type="text" data-hero-url placeholder="https://… or images.html/banner.jpg">
+                <label for="heroImageFile4" style="margin-top:12px">Choose an image file</label>
+                <input id="heroImageFile4" type="file" data-hero-file accept="image/*">
+            </article><article class="hero-admin-card" data-hero-slot="4">
+                <h4>Hero slide 5</h4>
+                <div class="hero-admin-preview"><span>Image preview</span></div>
+                <label for="heroImageUrl5">Image URL or path</label>
+                <input id="heroImageUrl5" type="text" data-hero-url placeholder="https://… or images.html/banner.jpg">
+                <label for="heroImageFile5" style="margin-top:12px">Choose an image file</label>
+                <input id="heroImageFile5" type="file" data-hero-file accept="image/*">
+            </article>
+        </div>
+        <div class="hero-admin-actions">
+            <button id="saveHeroImagesButton" type="button" class="btn btn-primary">Save hero image draft</button>
+            <button id="clearHeroImagesButton" type="button" class="btn btn-secondary">Clear draft</button>
+        </div>
+        <div id="heroImagesStatus" class="status-message" role="status" aria-live="polite"></div>
+    </div>
+</section>
 
 <footer class="footer">
     &copy; <span id="currentYear"></span>
@@ -1308,6 +1374,109 @@ document.querySelectorAll(".productUploadForm").forEach((form) => {
                 : "Upload to Shop";
         }
     });
+});
+
+
+const HERO_IMAGE_DRAFT_KEY = "ameHeroImageDrafts";
+const heroImageSlots = Array.from(document.querySelectorAll("[data-hero-slot]"));
+const heroImagesStatus = document.getElementById("heroImagesStatus");
+const heroSaveButton = document.getElementById("saveHeroImagesButton");
+
+function setHeroPreview(card, source) {
+    const preview = card.querySelector(".hero-admin-preview");
+    preview.replaceChildren();
+    if (!source) {
+        const label = document.createElement("span");
+        label.textContent = "Image preview";
+        preview.appendChild(label);
+        return;
+    }
+    const image = document.createElement("img");
+    image.src = source;
+    image.alt = "Hero slide preview";
+    image.addEventListener("error", () => {
+        const label = document.createElement("span");
+        label.textContent = "Image could not be previewed";
+        preview.replaceChildren(label);
+    }, { once: true });
+    preview.appendChild(image);
+}
+
+function showHeroStatus(message, kind = "info") {
+    heroImagesStatus.className = "status-message " + kind;
+    heroImagesStatus.textContent = message;
+}
+
+let savedHeroDrafts = [];
+try {
+    savedHeroDrafts = JSON.parse(localStorage.getItem(HERO_IMAGE_DRAFT_KEY) || "[]");
+    if (!Array.isArray(savedHeroDrafts)) savedHeroDrafts = [];
+} catch {
+    savedHeroDrafts = [];
+}
+heroImageSlots.forEach((card, index) => {
+    const draft = savedHeroDrafts[index] || {};
+    const urlInput = card.querySelector("[data-hero-url]");
+    const fileInput = card.querySelector("[data-hero-file]");
+    urlInput.value = draft.url || "";
+    setHeroPreview(card, draft.source || draft.url || "");
+    urlInput.addEventListener("input", () => {
+        fileInput.value = "";
+        setHeroPreview(card, urlInput.value.trim());
+    });
+    fileInput.addEventListener("change", () => {
+        const file = fileInput.files[0];
+        if (!file) return;
+        if (!file.type.startsWith("image/")) {
+            fileInput.value = "";
+            showHeroStatus("Choose an image file for each slide.", "error");
+            return;
+        }
+        setHeroPreview(card, URL.createObjectURL(file));
+    });
+});
+
+heroSaveButton.addEventListener("click", async () => {
+    heroSaveButton.disabled = true;
+    try {
+        const files = heroImageSlots.map(card => card.querySelector("[data-hero-file]").files[0] || null);
+        const totalBytes = files.reduce((total, file) => total + (file ? file.size : 0), 0);
+        if (files.some(file => file && file.size > 1024 * 1024) || totalBytes > 1024 * 1024) {
+            throw new Error("Keep each image under 1 MB and all selected images together under 1 MB.");
+        }
+        const drafts = await Promise.all(heroImageSlots.map(async (card, index) => {
+            const file = files[index];
+            const url = card.querySelector("[data-hero-url]").value.trim();
+            let source = url;
+            if (file) {
+                source = await new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onload = () => resolve(reader.result);
+                    reader.onerror = () => reject(new Error("Could not read one of the images."));
+                    reader.readAsDataURL(file);
+                });
+            }
+            return { url, source };
+        }));
+        localStorage.setItem(HERO_IMAGE_DRAFT_KEY, JSON.stringify(drafts));
+        savedHeroDrafts = drafts;
+        showHeroStatus("Hero image draft saved in this browser. The images are ready to preview here; live publishing will be available after image storage is connected.", "success");
+    } catch (error) {
+        showHeroStatus(error.message || "Could not save the hero image draft.", "error");
+    } finally {
+        heroSaveButton.disabled = false;
+    }
+});
+
+document.getElementById("clearHeroImagesButton").addEventListener("click", () => {
+    localStorage.removeItem(HERO_IMAGE_DRAFT_KEY);
+    savedHeroDrafts = [];
+    heroImageSlots.forEach(card => {
+        card.querySelector("[data-hero-url]").value = "";
+        card.querySelector("[data-hero-file]").value = "";
+        setHeroPreview(card, "");
+    });
+    showHeroStatus("Hero image draft cleared from this browser.", "info");
 });
 </script>
 
