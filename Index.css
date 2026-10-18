@@ -5727,3 +5727,59 @@ body {
         flex-basis: 125px;
     }
 }
+
+
+/* Match the Top Selling header link to the other homepage sections. */
+.top-selling-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 12px;
+}
+
+.top-selling-shop-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    flex-shrink: 0;
+    float: none;
+    margin-top: 0;
+    padding: 8px 0;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    color: #0077CC;
+    font-size: 14px;
+    font-weight: 800;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.25s ease;
+}
+
+.top-selling-shop-btn i {
+    font-size: 13px;
+    transition: transform 0.25s ease;
+}
+
+.top-selling-shop-btn:hover {
+    background: transparent;
+    color: #F47721;
+}
+
+.top-selling-shop-btn:hover i {
+    transform: translateX(4px);
+}
+
+@media (max-width: 480px) {
+    .top-selling-header {
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .top-selling-shop-btn {
+        padding: 6px 0;
+        font-size: 13px;
+    }
+}
