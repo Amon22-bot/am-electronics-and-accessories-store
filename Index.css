@@ -5632,3 +5632,98 @@ body {
     letter-spacing: .04em;
     pointer-events: none;
 }
+
+
+/* Keep every homepage product carousel aligned with Top Selling at each breakpoint. */
+.top-selling-card,
+.phone-cover-card,
+.new-arrival-card,
+.screen-protector-card,
+.headphones-section .products-container .product-card,
+.smartwatch-card,
+.chargers-cables-card,
+.recommended-product-card {
+    flex: 0 0 calc((100% - 40px) / 5);
+    height: 350px;
+    min-height: 350px;
+}
+
+.top-selling-image,
+.new-arrival-image,
+.phone-cover-image,
+.screen-protector-image,
+.product-image,
+.smartwatch-image,
+.chargers-cables-image,
+.recommended-product-image {
+    height: 150px;
+    flex: 0 0 150px;
+}
+
+@media (max-width: 1024px) {
+    .top-selling-card,
+    .phone-cover-card,
+    .new-arrival-card,
+    .screen-protector-card,
+    .headphones-section .products-container .product-card,
+    .smartwatch-card,
+    .chargers-cables-card,
+    .recommended-product-card {
+        flex-basis: calc((100% - 30px) / 4);
+    }
+}
+
+@media (max-width: 768px) {
+    .top-selling-card,
+    .phone-cover-card,
+    .new-arrival-card,
+    .screen-protector-card,
+    .headphones-section .products-container .product-card,
+    .smartwatch-card,
+    .chargers-cables-card,
+    .recommended-product-card {
+        flex-basis: calc((100% - 20px) / 3);
+        height: 330px;
+        min-height: 330px;
+    }
+
+    .top-selling-image,
+    .new-arrival-image,
+    .phone-cover-image,
+    .screen-protector-image,
+    .product-image,
+    .smartwatch-image,
+    .chargers-cables-image,
+    .recommended-product-image {
+        height: 135px;
+        flex-basis: 135px;
+    }
+}
+
+@media (max-width: 480px) {
+    .top-selling-card,
+    .phone-cover-card,
+    .new-arrival-card,
+    .screen-protector-card,
+    .headphones-section .products-container .product-card,
+    .smartwatch-card,
+    .chargers-cables-card,
+    .recommended-product-card {
+        flex-basis: calc((100% - 10px) / 2);
+        height: 315px;
+        min-height: 315px;
+        padding: 8px;
+    }
+
+    .top-selling-image,
+    .new-arrival-image,
+    .phone-cover-image,
+    .screen-protector-image,
+    .product-image,
+    .smartwatch-image,
+    .chargers-cables-image,
+    .recommended-product-image {
+        height: 125px;
+        flex-basis: 125px;
+    }
+}
