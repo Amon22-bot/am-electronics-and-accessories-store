@@ -6025,3 +6025,21 @@ body { background: #ffffff !important; }
     .navbar-search input { padding: 0 10px; font-size: 12px; }
     .navbar-search button { flex-basis: 58px; width: 58px; min-width: 58px; padding: 0 7px; font-size: 12px; }
 }
+
+
+/* Search bar color and rounded shape update */
+.navbar-search {
+    background: #ffffff !important;
+    border-radius: 30px !important;
+}
+
+.navbar-search input,
+.navbar-search input:focus { background: #ffffff !important; }
+
+.navbar-search button,
+.navbar-search button:hover {
+    background: #000000 !important;
+    color: #ffffff !important;
+    border-radius: 30px !important;
+    box-shadow: none;
+}
