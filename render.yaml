@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: am-electronics-store
+    runtime: node
+    plan: free
+    # Keep the project root as the build context so Server.js can serve ../client.
+    rootDir: .
+    buildCommand: npm --prefix server ci
+    startCommand: npm --prefix server start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGO_URI
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
