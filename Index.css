@@ -5977,3 +5977,51 @@ body h2 { color: #000000 !important; }
 .faq-container > h2 {
     color: #ffffff !important;
 }
+
+
+/* Jumia-inspired search styling and requested homepage colors */
+body { background: #ffffff !important; }
+
+.navbar-search {
+    height: 44px;
+    max-width: 500px;
+    border: 1px solid #d8d8d8;
+    border-radius: 4px;
+    background: #f1f1f2;
+    box-shadow: none;
+}
+
+.navbar-search:focus-within {
+    border-color: #f68b1f;
+    box-shadow: 0 0 0 2px rgba(246, 139, 31, 0.18);
+}
+
+.navbar-search input,
+.navbar-search input:focus {
+    background: #f1f1f2;
+    color: #282828;
+    font-size: 14px;
+}
+
+.navbar-search input::placeholder { color: #757575; opacity: 1; }
+
+.navbar-search button {
+    height: calc(100% - 6px);
+    margin: 3px;
+    padding: 0 19px;
+    border-radius: 4px;
+    background: #f68b1f;
+    color: #ffffff;
+    box-shadow: none;
+}
+
+.navbar-search button:hover { background: #e77c12; color: #ffffff; }
+
+.top-selling-slider { background: #ffd400 !important; }
+.new-arrivals-slider { background: #d62828 !important; }
+
+@media (max-width: 600px) {
+    .navbar-search { height: 40px; border-radius: 4px; }
+    .navbar-search input { padding: 0 10px; font-size: 12px; }
+    .navbar-search button { flex-basis: 58px; width: 58px; min-width: 58px; padding: 0 7px; font-size: 12px; }
+}
