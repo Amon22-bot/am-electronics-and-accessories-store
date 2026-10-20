@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const Product = require('../Models/Product');
-const { requireAdmin } = require('../Middleware/adminAuth');
+const Product = require('./Product');
+const { requireAdmin } = require('./adminAuth');
 
 const HOMEPAGE_CATEGORIES = [
     'top-selling',
