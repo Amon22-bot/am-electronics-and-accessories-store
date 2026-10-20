@@ -8,11 +8,11 @@ const path = require("path");
 const { Server } = require("socket.io");
 
 // IMPORTANT: Your folder is named "Routes" with a capital R.
-const productRoutes = require("./Routes/productRoutes");
-const orderRoutes = require("./Routes/orderRoutes");
+const productRoutes = require("./productRoutes");
+const orderRoutes = require("./orderRoutes");
 
 // Load environment variables
-dotenv.config({ path: require("path").join(__dirname, ".env") });
+dotenv.config();
 
 const app = express();
 const server = http.createServer(app);
@@ -67,18 +67,14 @@ app.get("/health", (req, res) => {
 app.use("/api/products", productRoutes);
 app.use("/api/orders", orderRoutes);
 
-// Serve the storefront from the same origin in a single-service deployment.
-// Static hosts can still serve /client separately when desired.
-const clientDirectory = path.join(__dirname, "..", "client");
-app.get("/", (req, res) => res.sendFile(path.join(clientDirectory, "Index.html")));
-app.use(express.static(clientDirectory, {
-    setHeaders(res, filePath) {
-        // Product photos with a legacy .enc suffix are WebP files in this project.
-        if (path.extname(filePath).toLowerCase() === ".enc") {
-            res.setHeader("Content-Type", "image/webp");
-        }
-    }
-}));
+// This service hosts the API. Deploy the frontend as a separate Render Static Site.
+app.get("/", (req, res) => {
+    res.status(200).json({
+        success: true,
+        message: "AM Electronics API is running.",
+        health: "/health"
+    });
+});
 
 // Socket.IO connection handler
 io.on("connection", (socket) => {
