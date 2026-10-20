@@ -1327,7 +1327,7 @@ body { background: #F5F9FC; }
 
 /* =========================================================
    SHOP PRODUCT CARD CONSISTENCY FIX
-   Descriptions stop after two lines; price rows align.
+   Two-line descriptions and consistent price alignment.
 ========================================================= */
 
 .shop-product-card {
@@ -1344,7 +1344,7 @@ body { background: #F5F9FC; }
     min-width: 0;
 }
 
-.shop-product-details > p,
+.shop-product-details > p:not(.shop-product-price),
 .shop-product-description,
 .shop-product-card .product-description {
     display: -webkit-box;
@@ -1359,16 +1359,14 @@ body { background: #F5F9FC; }
     overflow-wrap: anywhere;
 }
 
-.shop-product-price {
+.shop-product-bottom {
     margin-top: auto;
+}
+
+.shop-product-price {
     min-height: 2.8em;
     display: flex;
     align-items: flex-end;
     flex-wrap: wrap;
     gap: 4px 8px;
-}
-
-.shop-product-details .shop-product-price,
-.shop-product-details .price {
-    margin-top: auto;
 }
