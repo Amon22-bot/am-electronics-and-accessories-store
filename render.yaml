@@ -25,7 +25,7 @@ services:
     rootDir: .
     buildCommand: >-
       mkdir -p dist &&
-      cp About.css About.html Admin.html Cart.css Cart.html Cart.js Checkout.css Checkout.html Checkout.js Contact.css Contact.html Index.css Index.html Index.js Product-details.css Product-details.html Product-details.js Shop.html shop.css shop.js global-search.js homepageProducts.js loadProducts.js dist/ &&
+      cp About.css About.html Admin.html Cart.css Cart.html Cart.js Checkout.css Checkout.html Checkout.js Contact.css Contact.html Index.css Index.html Index.js Product-details.css Product-details.html Product-details.js Shop.html shop.css shop.js global-search.js homepageProducts.js loadProducts.js api-config.js products.js demo-product-cards.js dist/ &&
       cp Index.html dist/index.html &&
       cp -r images.html dist/images.html
     staticPublishPath: ./dist
