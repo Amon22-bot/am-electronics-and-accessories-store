@@ -6141,3 +6141,81 @@ body { background: #ffffff !important; }
     flex-wrap: wrap;
     gap: 4px 8px;
 }
+
+
+/* =========================================================
+   PRICE STACK FIX
+   Keep homepage category prices at bottom-left.
+   Discounted prices stack vertically: old price, badge, new price.
+========================================================= */
+.top-selling-price,
+.phone-cover-details .product-price,
+.new-arrival-price,
+.screen-protector-price,
+.headphones-section .product-price,
+.smartwatch-price,
+.chargers-cables-price,
+.recommended-product-details .product-price {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    align-self: stretch;
+    text-align: left;
+    flex-wrap: nowrap;
+    gap: 3px;
+}
+.top-selling-price > br,
+.phone-cover-details .product-price > br,
+.new-arrival-price > br,
+.screen-protector-price > br,
+.headphones-section .product-price > br,
+.smartwatch-price > br,
+.chargers-cables-price > br,
+.recommended-product-details .product-price > br { display: none; }
+
+.top-selling-details,
+.phone-cover-details,
+.new-arrival-details,
+.screen-protector-details,
+.headphones-section .headphones-product-link,
+.smartwatch-details,
+.chargers-cables-details,
+.recommended-product-details { flex: 1 1 auto; }
+
+.top-selling-price .discount-badge,
+.phone-cover-details .product-price .discount-badge,
+.new-arrival-price .discount-badge,
+.screen-protector-price .discount-badge,
+.headphones-section .product-price .discount-badge,
+.smartwatch-price .discount-badge,
+.chargers-cables-price .discount-badge,
+.recommended-product-details .product-price .discount-badge {
+    order: 2;
+    align-self: flex-start;
+    margin: 0;
+}
+.top-selling-price > strong:first-child,
+.phone-cover-details .product-price > strong:first-child,
+.new-arrival-price > strong:first-child,
+.screen-protector-price > strong:first-child,
+.headphones-section .product-price > strong:first-child,
+.smartwatch-price > strong:first-child,
+.chargers-cables-price > strong:first-child,
+.recommended-product-details .product-price > strong:first-child {
+    order: 1;
+    align-self: flex-start;
+    text-align: left;
+}
+.top-selling-price > strong:last-child,
+.phone-cover-details .product-price > strong:last-child,
+.new-arrival-price > strong:last-child,
+.screen-protector-price > strong:last-child,
+.headphones-section .product-price > strong:last-child,
+.smartwatch-price > strong:last-child,
+.chargers-cables-price > strong:last-child,
+.recommended-product-details .product-price > strong:last-child {
+    order: 3;
+    align-self: flex-start;
+    text-align: left;
+}

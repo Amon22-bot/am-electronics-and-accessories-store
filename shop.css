@@ -1370,3 +1370,26 @@ body { background: #F5F9FC; }
     flex-wrap: wrap;
     gap: 4px 8px;
 }
+
+
+/* SHOP PRICE STACK FIX: bottom-left alignment and vertical sale-price layout. */
+.shop-product-bottom { align-items: flex-start; }
+.shop-product-price {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    align-self: stretch;
+    text-align: left;
+    flex-wrap: nowrap;
+    gap: 3px;
+    margin-top: auto;
+}
+.shop-product-price > br { display: none; }
+.shop-product-price del { order: 1; align-self: flex-start; }
+.shop-product-price .discount-badge {
+    order: 2;
+    align-self: flex-start;
+    margin: 0;
+}
+.shop-product-price ins { order: 3; align-self: flex-start; }

@@ -514,12 +514,19 @@ document.addEventListener("DOMContentLoaded", function () {
             newPrice.style.textDecoration = "none";
 
 
+            const discountBadge =
+                document.createElement("span");
+
+            const discountPercent =
+                Math.round(
+                    ((oldPriceValue - currentPrice) / oldPriceValue) * 100
+                );
+
+            discountBadge.className = "discount-badge";
+            discountBadge.textContent = discountPercent + "%";
+
             price.appendChild(oldPrice);
-
-            price.appendChild(
-                document.createElement("br")
-            );
-
+            price.appendChild(discountBadge);
             price.appendChild(newPrice);
 
         } else {
