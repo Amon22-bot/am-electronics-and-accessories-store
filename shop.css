@@ -1323,3 +1323,50 @@ body { background: #F5F9FC; }
     letter-spacing: .04em;
     pointer-events: none;
 }
+
+
+/* =========================================================
+   SHOP PRODUCT CARD CONSISTENCY FIX
+   Two-line descriptions and consistent price alignment.
+========================================================= */
+
+.shop-product-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-width: 0;
+}
+
+.shop-product-details {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.shop-product-details > p:not(.shop-product-price),
+.shop-product-description,
+.shop-product-card .product-description {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 2.6em;
+    max-height: 2.6em;
+    line-height: 1.3em;
+    overflow-wrap: anywhere;
+}
+
+.shop-product-bottom {
+    margin-top: auto;
+}
+
+.shop-product-price {
+    min-height: 2.8em;
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 4px 8px;
+}

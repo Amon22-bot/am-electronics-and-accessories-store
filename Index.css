@@ -6086,3 +6086,58 @@ body { background: #ffffff !important; }
         font-size: 12px;
     }
 }
+
+
+/* =========================================================
+   PRODUCT CARD CONSISTENCY FIX
+   Two-line descriptions and consistent price alignment.
+========================================================= */
+
+.top-selling-details,
+.phone-cover-details,
+.new-arrival-details,
+.screen-protector-details,
+.headphones-section .headphones-product-link,
+.smartwatch-details,
+.chargers-cables-details,
+.recommended-product-details {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.top-selling-details > p:not(.top-selling-price),
+.phone-cover-details > p:not(.product-price),
+.new-arrival-details > p:not(.new-arrival-price),
+.screen-protector-description,
+.headphones-section .product-description,
+.smartwatch-description,
+.chargers-cables-description,
+.recommended-product-details .product-description {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 2.6em;
+    max-height: 2.6em;
+    line-height: 1.3em;
+    overflow-wrap: anywhere;
+}
+
+.top-selling-price,
+.phone-cover-details .product-price,
+.new-arrival-price,
+.screen-protector-price,
+.headphones-section .product-price,
+.smartwatch-price,
+.chargers-cables-price,
+.recommended-product-details .product-price {
+    margin-top: auto;
+    min-height: 2.8em;
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 4px 8px;
+}
