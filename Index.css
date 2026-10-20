@@ -6086,3 +6086,60 @@ body { background: #ffffff !important; }
         font-size: 12px;
     }
 }
+
+
+/* =========================================================
+   PRODUCT CARD CONSISTENCY FIX
+   Keep descriptions to two lines and align prices consistently.
+   Appended override: preserves the existing site colour palette.
+========================================================= */
+
+.top-selling-details,
+.phone-cover-details,
+.new-arrival-details,
+.screen-protector-card .product-details,
+.headphones-section .product-details,
+.smartwatch-card .product-details,
+.chargers-cables-card .product-details,
+.you-may-also-like .product-details {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-width: 0;
+}
+
+.top-selling-details > p,
+.phone-cover-details > p,
+.new-arrival-details > p,
+.screen-protector-description,
+.headphones-section .product-description,
+.smartwatch-description,
+.chargers-cables-description,
+.you-may-also-like .product-description {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 2.6em;
+    max-height: 2.6em;
+    line-height: 1.3em;
+    overflow-wrap: anywhere;
+}
+
+.top-selling-price,
+.phone-cover-price,
+.new-arrival-price,
+.screen-protector-price,
+.headphones-section .product-price,
+.smartwatch-price,
+.chargers-cables-price,
+.you-may-also-like .product-price {
+    margin-top: auto;
+    min-height: 2.8em;
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 4px 8px;
+}
