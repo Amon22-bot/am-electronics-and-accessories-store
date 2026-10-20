@@ -1,8 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const Order = require('../Models/Order');
-const Product = require('../Models/Product');
-const { issueAdminSession, requireAdmin, destroyAdminSession } = require('../Middleware/adminAuth');
+const Order = require('./Order');
+const Product = require('./Product');
+const { issueAdminSession, requireAdmin, destroyAdminSession } = require('./adminAuth');
 
 const router = express.Router();
 const failedAdminLogins = new Map();

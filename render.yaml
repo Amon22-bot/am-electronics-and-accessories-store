@@ -1,12 +1,12 @@
 services:
+  # Backend API: files are currently located in the repository root.
   - type: web
     name: am-electronics-store
     runtime: node
     plan: free
-    # Keep the project root as the build context so Server.js can serve ../client.
     rootDir: .
-    buildCommand: npm --prefix server ci
-    startCommand: npm --prefix server start
+    buildCommand: npm ci
+    startCommand: npm start
     healthCheckPath: /health
     envVars:
       - key: NODE_ENV
@@ -15,3 +15,17 @@ services:
         sync: false
       - key: ADMIN_PASSWORD
         sync: false
+      - key: FRONTEND_ORIGINS
+        sync: false
+
+  # Frontend: copy only browser files so backend source is not published as static content.
+  - type: web
+    name: am-electronics-frontend
+    runtime: static
+    rootDir: .
+    buildCommand: >-
+      mkdir -p dist &&
+      cp About.css About.html Admin.html Cart.css Cart.html Cart.js Checkout.css Checkout.html Checkout.js Contact.css Contact.html Index.css Index.html Index.js Product-details.css Product-details.html Product-details.js Shop.html shop.css shop.js global-search.js homepageProducts.js loadProducts.js api-config.js products.js demo-product-cards.js dist/ &&
+      cp Index.html dist/index.html &&
+      cp -r images.html dist/images.html
+    staticPublishPath: ./dist
