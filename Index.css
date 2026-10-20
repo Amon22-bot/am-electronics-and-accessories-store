@@ -6090,32 +6090,30 @@ body { background: #ffffff !important; }
 
 /* =========================================================
    PRODUCT CARD CONSISTENCY FIX
-   Keep descriptions to two lines and align prices consistently.
-   Appended override: preserves the existing site colour palette.
+   Two-line descriptions and consistent price alignment.
 ========================================================= */
 
 .top-selling-details,
 .phone-cover-details,
 .new-arrival-details,
-.screen-protector-card .product-details,
-.headphones-section .product-details,
-.smartwatch-card .product-details,
-.chargers-cables-card .product-details,
-.you-may-also-like .product-details {
+.screen-protector-details,
+.headphones-section .headphones-product-link,
+.smartwatch-details,
+.chargers-cables-details,
+.recommended-product-details {
     display: flex;
     flex-direction: column;
-    height: 100%;
     min-width: 0;
 }
 
-.top-selling-details > p,
-.phone-cover-details > p,
-.new-arrival-details > p,
+.top-selling-details > p:not(.top-selling-price),
+.phone-cover-details > p:not(.product-price),
+.new-arrival-details > p:not(.new-arrival-price),
 .screen-protector-description,
 .headphones-section .product-description,
 .smartwatch-description,
 .chargers-cables-description,
-.you-may-also-like .product-description {
+.recommended-product-details .product-description {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
@@ -6129,13 +6127,13 @@ body { background: #ffffff !important; }
 }
 
 .top-selling-price,
-.phone-cover-price,
+.phone-cover-details .product-price,
 .new-arrival-price,
 .screen-protector-price,
 .headphones-section .product-price,
 .smartwatch-price,
 .chargers-cables-price,
-.you-may-also-like .product-price {
+.recommended-product-details .product-price {
     margin-top: auto;
     min-height: 2.8em;
     display: flex;
