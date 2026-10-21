@@ -3,6 +3,6 @@
    assigns a different public URL. Do not put secrets in this browser file. */
 (function () {
   "use strict";
-  const configuredApiUrl = "https://am-electronics-store.onrender.com";
+  const configuredApiUrl = "https://am-electronics-store-thv0.onrender.com";
   window.AM_API_BASE_URL = configuredApiUrl.replace(/\/+$/, "");
 })();
