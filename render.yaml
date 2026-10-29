@@ -1,31 +1,14 @@
 services:
-  # Backend API: files are currently located in the repository root.
-  - type: web
-    name: am-electronics-store
-    runtime: node
-    plan: free
-    rootDir: .
-    buildCommand: npm ci
-    startCommand: npm start
-    healthCheckPath: /health
-    envVars:
-      - key: NODE_ENV
-        value: production
-      - key: MONGO_URI
-        sync: false
-      - key: ADMIN_PASSWORD
-        sync: false
-      - key: FRONTEND_ORIGINS
-        sync: false
-
-  # Frontend: copy only browser files so backend source is not published as static content.
+  # Frontend only. Deploy the am-electronics-api service first.
   - type: web
     name: am-electronics-frontend
     runtime: static
     rootDir: .
-    buildCommand: >-
-      mkdir -p dist &&
-      cp About.css About.html Admin.html Cart.css Cart.html Cart.js Checkout.css Checkout.html Checkout.js Contact.css Contact.html Index.css Index.html Index.js Product-details.css Product-details.html Product-details.js Shop.html shop.css shop.js global-search.js homepageProducts.js loadProducts.js api-config.js products.js demo-product-cards.js dist/ &&
-      cp Index.html dist/index.html &&
-      cp -r images.html dist/images.html
+    buildCommand: node scripts/build-static.js
     staticPublishPath: ./dist
+    envVars:
+      - key: API_BASE_URL
+        fromService:
+          name: am-electronics-api
+          type: web
+          envVarKey: RENDER_EXTERNAL_URL

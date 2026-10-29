@@ -1,8 +1,6 @@
-/* AM Electronics API configuration.
-   Update API_BASE_URL after the Render backend service is created if Render
-   assigns a different public URL. Do not put secrets in this browser file. */
 (function () {
   "use strict";
-  const configuredApiUrl = "https://am-electronics-store-thv0.onrender.com";
+
+  const configuredApiUrl = "http://localhost:5000";
   window.AM_API_BASE_URL = configuredApiUrl.replace(/\/+$/, "");
 })();
