@@ -4258,7 +4258,7 @@ button {
 .recommended-product-details h3 {
     margin: 0;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .product-description {
@@ -4301,6 +4301,7 @@ button {
 .product-availability span {
     color: #2ecc71; /* Vibrant green dot for active stock status */
     font-size: 14px;
+    display: none;
 }
 
 /* 6. Bottom Add to Cart Button Style */
