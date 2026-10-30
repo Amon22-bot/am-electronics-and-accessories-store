@@ -4216,7 +4216,7 @@ button {
     align-items: center;
     justify-content: center;
 
-    background: #FFFFFF;
+    background: transparent;
 
     border-radius: 6px;
 
