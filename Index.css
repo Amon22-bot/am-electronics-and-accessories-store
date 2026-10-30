@@ -4205,38 +4205,127 @@ button {
    PRODUCT IMAGES
    ========================================================= */
 
+/* 1. Frameless Image Section */
 .recommended-product-image {
-
     width: 100%;
     height: 250px;
-
     flex-shrink: 0;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     background: transparent;
-
-    border-radius: 6px;
-
+    border: none;
+    border-radius: 0;
     overflow: hidden;
 }
 
 .recommended-product-image img {
-
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
     object-position: center;
-   
 }
 
-.recommended-product-card:hover
-.recommended-product-image img {
-    transform: scale(1.05);
+/* 2. Main Card Container (Transparent & No Border) */
+.recommended-product-card {
+    display: flex;
+    flex-direction: column;
+    background: transparent;
+    border: none;
+    box-shadow: none; /* Clears any lingering container frames */
+    transition: transform 0.2s ease-in-out;
 }
+
+.recommended-product-card:hover {
+    transform: translateY(-4px);
+}
+
+.recommended-product-link {
+    text-decoration: none; /* Prevents underlines on titles and prices */
+    color: inherit;
+}
+
+/* 3. Text & Details Grid Area (No Backgrounds) */
+.recommended-product-details {
+    background: transparent;
+    padding: 12px 0px; /* Flush layout with zero side borders */
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.recommended-product-details h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.product-description {
+    margin: 0;
+    font-size: 13px;
+    color: #666666;
+    line-height: 1.4;
+}
+
+/* 4. Price & Badge Styles */
+.product-price {
+    margin: 4px 0;
+    line-height: 1.5;
+}
+
+.product-price del {
+    color: #999999;
+    font-size: 12px;
+}
+
+.discount-badge {
+    background-color: #f47721; /* Your signature vibrant orange action accent */
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 4px;
+    display: inline-block;
+    margin: 2px 0;
+}
+
+/* 5. Stock Status Indicator */
+.product-availability {
+    margin: 0;
+    font-size: 12px;
+    color: #666666;
+}
+
+.product-availability span {
+    color: #2ecc71; /* Vibrant green dot for active stock status */
+    font-size: 14px;
+}
+
+/* 6. Bottom Add to Cart Button Style */
+.add-to-cart-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #0077cc; /* Your brand trust blue accent */
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: auto; /* Pushes button beautifully to the bottom edge */
+    transition: background-color 0.2s;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #005fa3;
+}
+
+
+
 
 
 /* =========================================================
