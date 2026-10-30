@@ -4217,7 +4217,7 @@ button {
 .recommended-product-image {
 
     width: 100%;
-    height: 150px;
+    height: 250px;
 
     flex-shrink: 0;
 
@@ -4236,10 +4236,10 @@ button {
 
     width: 100%;
     height: 100%;
-
-    object-fit: contain;
-
+    object-fit: cover;
     transition: transform 0.3s ease;
+    object-position: center;
+   
 }
 
 .recommended-product-card:hover
